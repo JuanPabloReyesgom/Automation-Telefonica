@@ -1,0 +1,36 @@
+pipeline {
+  agent {
+    node {
+      label 'SQA_DAYALAGO'
+    }
+
+  }
+  stages {
+    stage('Build') {
+      steps {
+        echo 'Ejecución de Pipeline-Portal Cuentas AFC'
+      }
+    }
+
+    stage('TestLogIn') {
+      steps {
+        bat 'gradle test'
+      }
+    }
+	
+	stage('Publicar Reporte HTML') {
+      steps {
+        publishHTML(target: [
+		allowMissing: false,
+            alwaysLinkToLastBuild: false,
+            keepAll: true,
+            reportDir: 'C:\\Jenkins\\workspace\\PocPortalCuentasAFC_Automatizacion\\target\\site\\serenity',
+            reportFiles: 'index.html',
+            reportTitles: "SimpleCov Report",
+            reportName: "SimpleCov Report"
+		])
+      }
+    }
+
+  }
+}

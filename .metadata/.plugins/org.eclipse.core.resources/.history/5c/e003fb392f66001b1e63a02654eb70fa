@@ -1,0 +1,24 @@
+package com_automation.Telefonica.Steps;
+
+public class InicioDeSesionSteps {
+	
+InicioDeSesionPageObject inicioDeSesionPOM=new InicioDeSesionPageObject();
+	
+	@Step
+	public void abrirAplicacionHSEQ() {
+		inicioDeSesionPOM.open();
+	}
+	@Step
+	public void clickEnLogIn(String usuario, String clave) throws InterruptedException {
+		inicioDeSesionPOM.enviarcredenciales(usuario,clave);
+	}
+	
+	@Step
+	public void obtenerTextoDeMensaje() throws InterruptedException {
+		inicioDeSesionPOM.obtenerTextoDeAlerta();
+	}
+
+	
+
+		
+}
