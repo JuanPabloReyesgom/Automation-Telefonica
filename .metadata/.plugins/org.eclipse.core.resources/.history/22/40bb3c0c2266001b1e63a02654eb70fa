@@ -1,0 +1,5 @@
+package com_automation.Telefonica.Models;
+
+public class Usuario {
+
+}
